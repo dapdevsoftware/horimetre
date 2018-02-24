@@ -1,2 +1,1 @@
-# horimetre
-Forklift horimetre control project
+Horimetre control webapp project.

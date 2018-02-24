@@ -34,7 +34,7 @@ class Machines extends Component {
     render() {
         return (
             <div className="container">
-                <BootstrapTable keyField='id'
+                <BootstrapTable keyField='serialNumber'
                                 data={ products }
                                 columns={ columns }
                                 striped
