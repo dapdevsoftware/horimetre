@@ -25,15 +25,24 @@ const products = [
 ];
 
 const rowEvents = {
-    onClick: (e, row, rowIndex) => {
-      "<Link to="/" + {e.target.value}/>";
-    }
+    onClick: (e, row, rowIndex) =>
+      {
+        this.props.history.push({pathname: '/' + e.target.value});
+      }
   };
+
+const AddMachine = () => <button type="button"
+                            className="btn btn-primary"
+                            style={{float:'right', marginBottom: '10px'}}>
+                            Adicionar
+                         </button>
 
 class Machines extends Component {
     render() {
         return (
             <div className="container">
+                <h4 style={{ borderRadius: '0.25em', textAlign: 'center', padding: '0.5em' }}>Máquinas</h4>
+                <AddMachine/>
                 <BootstrapTable keyField='serialNumber'
                                 data={ products }
                                 columns={ columns }
