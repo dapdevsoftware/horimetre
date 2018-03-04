@@ -13,7 +13,7 @@ const columns = [{
 }
 ];
 
-const products = [
+const readings = [
 {model: 'H50FT', plate: '1774H', serialNumber: 'A977Y11774H'},
 {model: 'H50FT', plate: '1776H', serialNumber: 'A977Y11776H'},
 {model: 'H50FT', plate: '2769J', serialNumber: 'A977Y12769J'},
@@ -29,12 +29,20 @@ const rowEvents = {
     }
   };
 
+const AddReadings = () => <button type="button"
+  className="btn btn-primary"
+  style={{float:'right', marginBottom: '10px'}}>
+  Adicionar
+</button>
+
 class Readings extends Component {
     render() {
         return (
             <div className="container">
+                <h4 style={{ borderRadius: '0.25em', textAlign: 'center', padding: '0.5em' }}>Leituras</h4>
+                <AddReadings/>
                 <BootstrapTable keyField='id'
-                                data={ products }
+                                data={ readings }
                                 columns={ columns }
                                 striped
                                 hover
