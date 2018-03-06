@@ -4,8 +4,8 @@ import Readings from './Readings';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Router } from "react-router";
-import { Route } from "react-router-dom";
-import createBrowserHistory from 'history/createBrowserHistory'
+import { Route, Switch } from "react-router-dom";
+import createBrowserHistory from 'history/createBrowserHistory';
 
 const history= createBrowserHistory();
 
@@ -17,8 +17,10 @@ class App extends Component {
           <header className="App-header">
             <h1 className="App-title">Projeção de horímetros</h1>
           </header>
-          <Machines/>
-          <Route path="/:id" component={Readings} />
+          <Switch>
+            <Route exact path="/" component={Machines}/>
+            <Route path="/:id" component={Readings} />
+          </Switch>
         </div>
       </Router>
     );

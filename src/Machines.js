@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
-import { Link } from "react-router-dom";
+import {withRouter} from 'react-router-dom';
 
 const columns = [{
   dataField: 'model',
@@ -24,13 +24,6 @@ const products = [
 {model: 'H50FT', plate: '3556J', serialNumber: 'A977Y13556J'}
 ];
 
-const rowEvents = {
-    onClick: (e, row, rowIndex) =>
-      {
-        this.props.history.push({pathname: '/' + e.target.value});
-      }
-  };
-
 const AddMachine = () => <button type="button"
                             className="btn btn-primary"
                             style={{float:'right', marginBottom: '10px'}}>
@@ -38,22 +31,28 @@ const AddMachine = () => <button type="button"
                          </button>
 
 class Machines extends Component {
-    render() {
-        return (
-            <div className="container">
-                <h4 style={{ borderRadius: '0.25em', textAlign: 'center', padding: '0.5em' }}>Máquinas</h4>
-                <AddMachine/>
-                <BootstrapTable keyField='serialNumber'
-                                data={ products }
-                                columns={ columns }
-                                striped
-                                hover
-                                condensed
-                                rowEvents={ rowEvents }
-                />
-            </div>
-        )
-    }
+  render() {
+    const rowEvents = {
+      onClick: (e, row, rowIndex) =>
+        {
+          this.props.history.push({pathname: '/' + row.serialNumber});
+        }
+    };
+    return (
+        <div className="container">
+            <h4 style={{ borderRadius: '0.25em', textAlign: 'center', padding: '0.5em' }}>Máquinas</h4>
+            <AddMachine/>
+            <BootstrapTable keyField='serialNumber'
+                            data={ products }
+                            columns={ columns }
+                            striped
+                            hover
+                            condensed
+                            rowEvents={ rowEvents }
+            />
+        </div>
+    )
+  }
 }
 
-export default Machines;
+export default withRouter(Machines);

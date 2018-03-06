@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import BootstrapTable from 'react-bootstrap-table-next';
+import {withRouter} from 'react-router-dom';
 
 const columns = [{
   dataField: 'model',
@@ -23,35 +24,37 @@ const readings = [
 {model: 'H50FT', plate: '3556J', serialNumber: 'A977Y13556J'}
 ];
 
-const rowEvents = {
-    onClick: (e, row, rowIndex) => {
-      alert(`clicked on row with index: ${rowIndex}`);
-    }
-  };
-
 const AddReadings = () => <button type="button"
   className="btn btn-primary"
-  style={{float:'right', marginBottom: '10px'}}>
+  style={{float:'right', margin: '0 0 10px 10px'}}>
   Adicionar
 </button>
 
+const Return = withRouter(({history}) => <button type="button"
+  className="btn"
+  style={{float:'right', marginBottom: '10px'}}
+  onClick={() => { history.push('/')}}
+  >
+  Voltar
+</button>)
+
 class Readings extends Component {
-    render() {
-        return (
-            <div className="container">
-                <h4 style={{ borderRadius: '0.25em', textAlign: 'center', padding: '0.5em' }}>Leituras</h4>
-                <AddReadings/>
-                <BootstrapTable keyField='id'
-                                data={ readings }
-                                columns={ columns }
-                                striped
-                                hover
-                                condensed
-                                rowEvents={ rowEvents }
-                />
-            </div>
-        )
-    }
+  render() {
+    return (
+        <div className="container">
+            <h4 style={{ borderRadius: '0.25em', textAlign: 'center', padding: '0.5em' }}>Leituras</h4>
+            <AddReadings/>
+            <Return/>
+            <BootstrapTable keyField='serialNUmber'
+                            data={ readings }
+                            columns={ columns }
+                            striped
+                            hover
+                            condensed
+            />
+        </div>
+    )
+  }
 }
 
 export default Readings;
