@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Machines from './Machines';
 import Readings from './Readings';
+import Login from './Login';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Router } from "react-router";
@@ -18,6 +19,7 @@ class App extends Component {
             <h1 className="App-title">Projeção de horímetros</h1>
           </header>
           <Switch>
+            <Route exact path="/login"  component={Login} />
             <Route exact path="/" component={Machines}/>
             <Route path="/:id" component={Readings} />
           </Switch>
