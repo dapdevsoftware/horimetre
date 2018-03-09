@@ -12,17 +12,20 @@ const columns = [{
 }, {
   dataField: 'serialNumber',
   text: 'Série'
+}, {
+  dataField: 'lastRead',
+  text: 'Horímetro'
 }
 ];
 
-const products = [
-{model: 'H50FT', plate: '1774H', serialNumber: 'A977Y11774H'},
-{model: 'H50FT', plate: '1776H', serialNumber: 'A977Y11776H'},
-{model: 'H50FT', plate: '2769J', serialNumber: 'A977Y12769J'},
-{model: 'H50FT', plate: '3551J', serialNumber: 'A977Y13551J'},
-{model: 'H50FT', plate: '3552J', serialNumber: 'A977Y13552J'},
-{model: 'H50FT', plate: '3554J', serialNumber: 'A977Y13554J'},
-{model: 'H50FT', plate: '3556J', serialNumber: 'A977Y13556J'}
+const machines = [
+{model: 'H50FT', plate: '1774H', serialNumber: 'A977Y11774H', lastRead: 11012},
+{model: 'H50FT', plate: '1776H', serialNumber: 'A977Y11776H', lastRead: 12012},
+{model: 'H50FT', plate: '2769J', serialNumber: 'A977Y12769J', lastRead: 15012},
+{model: 'H50FT', plate: '3551J', serialNumber: 'A977Y13551J', lastRead: 16012},
+{model: 'H50FT', plate: '3552J', serialNumber: 'A977Y13552J', lastRead: 17012},
+{model: 'H50FT', plate: '3554J', serialNumber: 'A977Y13554J', lastRead: 17812},
+{model: 'H50FT', plate: '3556J', serialNumber: 'A977Y13556J', lastRead: 19012}
 ];
 
 class Machines extends Component {
@@ -75,7 +78,7 @@ class Machines extends Component {
               </Modal.Footer>
             </Modal>            
             <BootstrapTable keyField='serialNumber'
-                            data={ products }
+                            data={ machines }
                             columns={ columns }
                             striped
                             hover
