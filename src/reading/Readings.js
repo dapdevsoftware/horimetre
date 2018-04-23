@@ -26,11 +26,12 @@ const readings = [
 {id: 7, date: '30/12/2017', hours: '9774'}
 ];
 
-const AddReadings = () => <button type="button"
+const AddReadings = withRouter(({history}) => <button type="button"
   className="btn btn-primary"
-  style={{float:'right', margin: '0 0 10px 10px'}}>
+  style={{float:'right', margin: '0 0 10px 10px'}}
+  onClick={() => {history.push({pathname: '/reading/add'})}}>
   Adicionar
-</button>
+</button>)
 
 const Return = withRouter(({history}) => <button type="button"
   className="btn"
